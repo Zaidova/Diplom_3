@@ -34,15 +34,3 @@ def generate_new_user_credentials(empty_field=None):
     if empty_field is not None:
         credentials[empty_field] = ""
     return credentials
-
-
-def create_user(credentials):
-    response = api.create_user(credentials)
-    response_payload = response.json()
-    credentials['accessToken'] = response_payload['accessToken']
-
-    return credentials
-
-
-def delete_user(credentials):
-    api.delete_user(credentials['accessToken'])

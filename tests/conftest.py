@@ -1,6 +1,8 @@
 from selenium import webdriver
 import pytest
 import allure
+
+import api
 import data
 import helpers
 
@@ -63,8 +65,8 @@ def password_recovery_page(driver):
 @pytest.fixture
 def user_credentials():
     credentials = helpers.generate_new_user_credentials()
-    helpers.create_user(credentials)
+    api.new_user(credentials)
 
     yield credentials
 
-    helpers.delete_user(credentials)
+    api.remove_user(credentials)
